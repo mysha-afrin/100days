@@ -1,19 +1,14 @@
 import random
-word_list = ['Soikot', 'camel', 'bungi', 'mango', 'banana']
-chosen_word = random.choice(word_list)
+word_list = ["banana", "apple", "reach", "terminal", "overtime"]
+chosen_word = random.choice(word_list)#chooses a word randomly.
 print(chosen_word)
-
-
-#Make the user guess a word
-guess = input(str("Guess a word:\n")).lower()
-
-
+guess = input("Guess a word :")
 print(guess)
-
-
-#Check if the guess word is right if right it will print write for each word
-for letter in chosen_word:
-    if chosen_word == guess:
+place_holder = "_"
+word = (place_holder * len(chosen_word))
+print(word)
+for word in chosen_word:
+    if word in guess:
         print("Right")
     else:
         print("Wrong")
