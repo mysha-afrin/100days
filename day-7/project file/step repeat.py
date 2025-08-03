@@ -1,5 +1,10 @@
 import random
-word_list = ["algorithm", "elepant", "biologist", "happiness", "", "telegram", "notebook", "rainbow", "beautiful", "adventure", "stronger", "education", "Knowledge"]
+from hangman_word import word_list
+from hangman_art import logo, stages
+#from hangman_art import stages
+
+#word_list = ["algorithm", "elepant", "biologist", "happiness", "", "telegram", "notebook", "rainbow", "beautiful", "adventure", "stronger", "education", "Knowledge"]
+print(logo)
 lives = 6
 chosen_word = random.choice(word_list)
 print(chosen_word)
@@ -8,60 +13,7 @@ world_length = len(chosen_word)
 for position in range(world_length):
     place_holder += "_"
 print(place_holder)
-stages = [  '''
-      
-     |    
-     |      
-     |      
-     |       
-     |      
-     |
-    _|__''','''
-     _______
-     |/     
-     |     
-     |     
-     |     
-     |     
-     |
-    _|___''',
-    '''
-     _______
-     |/     |
-     |     
-     |     
-     |      
-     |     
-     |
-    _|___''' ,
-    '''
-     _______
-     |/     |
-     |     (_)
-     |     
-     |      
-     |     
-     |
-    _|___ ''',
-   '''
-      _______
-     |/      |
-     |      (_)
-     |      \|/
-     |       
-     |      
-     |
-    _|___''' ,
-    
-    ''''
-       _______
-     |/      |
-     |      (_)
-     |      \|/
-     |       |
-     |      / \
-     |
-    _|___''']
+
 
 game_over = False
 correct_letter = []
@@ -78,6 +30,7 @@ while not game_over:
             
         elif letter in correct_letter:
             display += letter
+            print(f"You already guessed {guess}")
         else:
             display += "_"
             
@@ -86,25 +39,27 @@ while not game_over:
     print(display)
     if guess not in chosen_word:
         lives -= 1
-        print(lives)
+        if lives == 6:
+            print(stages[0])
+        elif lives == 5:
+            print(stages[1])
+        elif lives == 4:
+            print(stages[2])
+        elif lives == 3:
+            print(stages[3])
+        elif lives == 2:
+            print(stages[4])
+        elif lives == 1:
+            print(stages[5])
+        print("You losed one life.")
+        print(f"You have {lives} left")
+        
         if lives == 0:
-            print("You lose")
-            print(lives)
+            print(stages[6])
+            print("Oops you lose!")
             break
-    if lives == 6:
-        print(stages[0])
-    elif lives == 5:
-        print(stages[1])
-    elif lives == 4:
-        print(stages[2])
-    elif lives == 3:
-        print(stages[3])
-    elif lives == 2:
-        print(stages[4])
-    elif lives == 1:
-        print(stages[5])
-    elif lives == 0:
-        print(stages[6])
+    
+        
     if "_" not in display:
         print("You win!")
         break
