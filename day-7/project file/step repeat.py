@@ -1,5 +1,6 @@
 import random
 word_list = ["soikot", "mango", "banana", "apple", "terminal", "telegram", "world", "syntax"]
+lives = 6
 chosen_word = random.choice(word_list)
 print(chosen_word)
 place_holder = ""
@@ -11,7 +12,7 @@ print(place_holder)
 
 game_over = False
 correct_letter = []
-lives = 6
+
 while not game_over:
     guess = input("Guess a word:").lower()
     
@@ -21,12 +22,18 @@ while not game_over:
         if letter == guess:
             display += letter
             correct_letter.append(guess)
+            
         elif letter in correct_letter:
             display += letter
         else:
             display += "_"
-            lives -= 1 and lives < 0
-            print(lives)
+            
     print(display)
+    if guess not in chosen_word:
+        lives -= 1
+        print(lives)
     if "_" not in display:
         print("You win!")
+    elif lives == 0:
+        print("You lost.")
+    
