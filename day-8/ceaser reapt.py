@@ -2,14 +2,14 @@ from art import logo
 
 print(logo)
 
-alphabetes = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k','l','m','n', 'o', 'p','q', 'r','s','t','u','v','w' ,'x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k','l','m','n', 'o', 'p','q', 'r','s','t','u','v','w' ,'x','y','z']
+alphabetes = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l','m','n', 'o', 'p','q', 'r','s','t','u','v','w' ,'x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l','m','n', 'o', 'p','q', 'r','s','t','u','v','w' ,'x','y','z']
 direction = input("Type encode to encrypt and type decode to decrypt: \n")
 shift = int(input('Type the shift number \n'))
 
 
 text = input("Type you message:").lower()
 
-def encrypt(actual_message, shifted_amount):
+'''def encrypt(actual_message, shifted_amount):
     cyfer_text = ""
 
 
@@ -27,8 +27,8 @@ def decrypt(original_text, shift_amount):
         shifted_position = alphabetes.index(letter) - shift_amount
         shifted_position %= len(alphabetes)
         output_text += alphabetes[shifted_position]
-    print(f"Here is the shifted message: {output_text}")
-decrypt(original_text = text, shift_amount = shift)
+    
+decrypt(original_text = text, shift_amount = shift)'''
     
 
 def ceaser (original_text, shift_amount, encode_or_decode):
@@ -38,12 +38,13 @@ def ceaser (original_text, shift_amount, encode_or_decode):
             output_text += letter
             continue
         else:
-            
-            shifted_position = alphabetes.index(letter) - shift_amount
-            shifted_position %= len(alphabetes)
-            output_text += alphabetes[shifted_position]
+            if encode_or_decode == "decode":
+                shift_amount *= -1
+        shifted_position = alphabetes.index(letter) - shift_amount
+        shifted_position %= len(alphabetes)
+        output_text += alphabetes[shifted_position]
     print(f"Here is the shifted message: {output_text}")
-#ceaser(original_text = text, shift_amount = shift, encode_or_decode = direction)
+ceaser(original_text = text, shift_amount = shift, encode_or_decode = direction)
 
 should_continue = True
 while should_continue:
@@ -56,13 +57,3 @@ while should_continue:
         should_continue = False
         print("Goodbye!")
         break
-    
-
-
-
-
-
-'''ask_user = input("Do you want to continue? y for yes and n for NO")
-if ask_user == "y":
-    print("Let's continue.")'''
-    
