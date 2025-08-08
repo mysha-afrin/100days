@@ -13,3 +13,8 @@ print(programming_dictionary)
 #editing a dictionary item
 programming_dictionary["Bug"] = "A moth in your computer."
 print(programming_dictionary)
+
+#looping through a dictionary
+for key in programming_dictionary:
+    print(key)
+    print(programming_dictionary[key])
