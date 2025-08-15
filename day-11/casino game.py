@@ -11,3 +11,11 @@ def deal_card():
     card = random.choice(cards)
     return card
 
+user_cards = []
+computers_card = []
+for _ in range(2):
+    #using under score with for loop to indiczte that we don't need the loop variable
+    #deal two cards to user and computer
+    
+    user_cards.append(deal_card())
+    computers_card.append(deal_card())
