@@ -35,8 +35,14 @@ while attempts < max_attempts:
             continue
         if guess < number_to_guess:
             print( "Too low! Try again.")
+            if attempts == max_attempts:
+                print(f"Sorry, you've run out of attempts. The number was {number_to_guess}.")
+                break
         elif guess > number_to_guess:
             print("Too high! Try again.")
+            if attempts == max_attempts:
+                print(f"Sorry, you've run out of attempts. The number was {number_to_guess}.")
+                break
         elif guess == number_to_guess:
             print(f"Congratulations! You've guessed the number {number_to_guess} correctly!")
             break
