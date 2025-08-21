@@ -1,6 +1,4 @@
-def my_function():
-    for i in range(1, 20):
-        print(i)
-        if i == 20:
-            print("You got it!")
-my_function()
+from random import randint
+dice_images = ["1", "2", "3", "4", "5", "6"]
+dice_num = randint(0, 5)
+print(dice_images[dice_num])
