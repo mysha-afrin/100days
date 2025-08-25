@@ -18,3 +18,5 @@ logo = [r"""
 
 
 """]
+
+print(logo)
