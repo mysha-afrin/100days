@@ -1,12 +1,12 @@
 data = [{'name' : 'Mr beast',
          'age' : 27,
-         'net worth' : 124}, 
+         'insta' : 124}, 
          {'name': 'Jake Paul',
          'age' : 26,
          'net worth' : 190},
          {'name' : 'Jeffree Star',
          'age' : 35,
-         'net worth' : 200},
+         'insta' : 200},
          {'name' : 'Sakira',
           'age' : 46,
-          'net worth' : 300},]
+          'insta' : 300},]
