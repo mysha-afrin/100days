@@ -6,5 +6,6 @@ x.add_row(["Pichacu", "Electric"])
 x.add_row(["Bulbasaur", "Grass/Poison"])
 x.add_row(["Charmander", "Fire"])
 x.align = "l"
+x.valign = "t"
 print(x)
 
