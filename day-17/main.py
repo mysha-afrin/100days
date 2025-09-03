@@ -1,16 +1,17 @@
 
 class User:
-    pass
+    def __init__(self, username, id, password):
+        self.username = username
+        self.id = id
+        self.username = username
+        self.password = password
 # pass is used as a placeholder for code that will be implemented later.
-
-user_1 = User()
-user_1.id = "001"
-user_1.username = "angela"
-user_1.password = "1234"
-
-print(user_1.username)
-
-user_2 = User()
-user_2.id = "002"
-user_2.username = "jack"
-user_2.password = "abcd"
+    def __repr__(self):
+        return f"User(username = {self.username}, id = {self.id}, password = {self.password})"
+    
+#create user objects
+user_1 = User("Angela", 1, "password123")
+user_2 = User("Jack", 2, "qwerty")
+#Print user objects
+print(user_1)
+print(user_2)
