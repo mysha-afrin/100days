@@ -2,13 +2,12 @@ import turtle as t
 from turtle import Screen
 import random
 tim = t.Turtle()
-for _ in range(6):
-    tim.forward(10)
-    tim.penup()
-    tim.forward(10)
-    tim.pendown()
-    tim.right(10)
-    tim.pendown()
+
+for num_sides in range(3, 8):
+    angle = 360 / num_sides
+    for _ in range(num_sides):
+        tim.forward(100)
+        tim.right(angle)
 
 screen = Screen()
 screen.exitonclick()
