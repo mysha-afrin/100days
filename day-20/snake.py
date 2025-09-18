@@ -1,19 +1,19 @@
 import turtle
-
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
     def create_snake(self):
-        starting_positions = [(0, 0), (-20, 0), (-40, 0)]
-        for position in starting_positions:
+       
+        for position in STARTING_POSITIONS:
             self.add_segment(position)
     def add_segment(self, position):
-        new_segment = turtle.Turtle("spuare")
+        new_segment = turtle.Turtle("square")
         new_segment.color("white")
-        new_segment.goto(position)
         new_segment.penup()
+        new_segment.goto(position)
         self.segments.append(new_segment)
     def extend(self):
         self.add_segment(self.segments[-1].position())
@@ -26,15 +26,15 @@ class Snake:
     def up(self):
         if self.head.heading() != 270:
             self.head.setheading(90)
-        def down(self):
-            if self.head.heading() != 90:
-                self.head.setheading(270)
-        def left(self):
-            if self.head.heading() != 0:
-                self.head.setheading(180)
-        def right(self):
-            if self.head.heading() != 180:
-                self.head.setheading(0)
+    def down(self):
+        if self.head.heading() != 90:
+            self.head.setheading(270)
+    def left(self):
+        if self.head.heading() != 0:
+            self.head.setheading(180)
+    def right(self):
+        if self.head.heading() != 180:
+            self.head.setheading(0)
 screen = turtle.Screen()
 screen.setup(width = 600, height= 600)
 screen.bgcolor("black")
@@ -51,3 +51,4 @@ while game_is_on:
     screen.update()
     turtle.time.sleep(0.1)
     snake.move()
+screen.exitonclick()
