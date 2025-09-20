@@ -8,7 +8,7 @@ def move_backwards():
 def move_clockwise():
     tim.setheading(tim.heading() - 10)
 def turn_left():
-    tim.heading(10) 
+    tim.left(10)
 def turn_right():
     tim.right(10)
 def draw_circle():
