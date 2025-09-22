@@ -7,10 +7,14 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
-screen.tracer(5)
+screen.tracer(0)
 
 snake = Snake()
 food = Food()
+food.showturtle()
+food.shapesize(2)
+food.color("blue")
+screen.update()
 screen.listen()
 screen.onkey(key = "Up", fun = snake.up)
 screen.onkey(key = "Down", fun = snake.down)
@@ -23,7 +27,11 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
-    food.move()
+    
+
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        snake.extend()
 
 
     
