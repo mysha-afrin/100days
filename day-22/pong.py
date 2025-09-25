@@ -4,6 +4,8 @@ from turtle import Turtle, Screen
 import game_essentials
 import time
 from game_essentials import Player
+from ball import Ball
+
 
 screen = Screen()
 screen.setup(width = 800, height = 600)
@@ -14,6 +16,7 @@ screen.tracer(0)
 
 l_paddle = game_essentials.l_paddle
 r_paddle = game_essentials.r_paddle
+ball = Ball()
 
 screen.listen()
 screen.onkey(l_paddle.go_up, "w")
@@ -26,5 +29,13 @@ game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
+    ball.move()
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
 
-screen.exitonclick()
+
+
+
+    
+
+screen.mainloop()
