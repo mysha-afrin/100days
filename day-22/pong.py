@@ -32,7 +32,7 @@ while game_is_on:
     ball.move()
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce()
-
+    
 
 
 
