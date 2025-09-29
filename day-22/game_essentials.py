@@ -23,5 +23,3 @@ class Player(Turtle):
         self.goto(self.xcor(), new_y)
 l_paddle = Player((-350, 0))
 r_paddle = Player((350, 0))
-
-
