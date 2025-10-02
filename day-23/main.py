@@ -10,6 +10,9 @@ screen.tracer(0)
 player = Player()
 car_manager = CarManager()
 
+screen.listen()
+screen.onkey(player.go_up, "Up")
+#screen.onkey(player.go_down, "Down")
 game_is_on = True
 while game_is_on :
     time.sleep(.1)
