@@ -7,10 +7,11 @@ print(add(5, 10, 15, 20))
 
 
 
-class car:
-    def __init__ (self, **kwargs):
-        print(kwargs)
-        n += kwargs["add"]
+def calcultate(n, **kwargs):
+    for key, value in kwargs.items():
+        print(f" kwargs : {kwargs}")
         n *= kwargs["multiply"]
+        n += kwargs["add"]
         print(n)
-car(2, add = 3, multiply = 5)
+
+calcultate(2,add=5, multiply=10)
