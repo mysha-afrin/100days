@@ -32,4 +32,32 @@ entry.pack()
 text = Text(height = 5, width= 30)
 text.insert(END, "Example of multi-line text entry")
 text.pack()
+
+def spinbox_used():
+    print(spinbox.get())
+spinbox = Spinbox(from_=0, to=10, width=5, command=spinbox_used)
+spinbox.pack()
+
+def checkbutton_used():
+    print(checked_state.get())
+checked_state = IntVar()
+checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbutton_used)
+checkbutton.pack()
+def radio_used():
+    print(radio_state.get())
+radio_state = IntVar()
+radiobutton1 = Radiobutton(text="Option 1", value=1, variable=radio_state, command=radio_used)
+radiobutton2 = Radiobutton(text="Option 2", value=2, variable=radio_state, command = radio_used)
+radiobutton1.pack()
+radiobutton2.pack()
+
+def listbox_used(event):
+    print(listbox.get(listbox.curselection()))
+listbox = Listbox(height=4)
+fruits = ["Apple", "Banana", "Cherry", "Date"]
+for item in fruits:
+    listbox.insert(fruits.index(item), item)
+listbox.bind("<<ListboxSelect>>", listbox_used)
+listbox.pack()
+
 window.mainloop()
