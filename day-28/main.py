@@ -9,6 +9,9 @@ import sys
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
+
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 # # ---------------------------- CONSTANTS ------------------------------- #
@@ -26,6 +29,14 @@ LONG_BREAK_MIN = 20
 window = Tk()
 window.title("Pomodoro")
 window.config(padx = 100, pady = 50, bg = YELLOW)
+
+
+def say_something(thing):
+    print(thing)
+
+
+window.after(2000, say_something, "Hello World!")  # Test after method
+
 
 title_label = Label(text = "Timer", fg = GREEN, bg = YELLOW, font = (FONT_NAME, 50))
 title_label.grid(row=0, column=1)
