@@ -9,7 +9,7 @@ import sys
 
 
 def start_countdown():
-    count_down(25 * 60)
+    count_down(1 * 60)
 
 
 
