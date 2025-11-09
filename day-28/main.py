@@ -8,17 +8,10 @@ import sys
 # diagnostics
 
 
-def start_countdown():
-    count_down(1 * 60)
 
 
 
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
-def count_down(count):
-    canvas.itemconfig(timer_text, text=f"{count // 60:02}:{count % 60:02}")
-    if count > 0:
-        window.after(1000, count_down, count - 1)
 
 
 
@@ -32,17 +25,81 @@ YELLOW = "#e9e4b0"
 
 BUTTON_COLOR = "F7CAC9"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
-
+WORK_MIN = 2
+SHORT_BREAK_MIN = 1
+LONG_BREAK_MIN = 2
+repr = 0
+timer = None
 window = Tk()
 window.title("Pomodoro")
 window.config(padx = 100, pady = 50, bg = YELLOW)
 
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+def start_countdown():
+    global repr
+    repr += 1
 
-def say_something(thing):
-    print(thing)
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if repr % 8 == 0:
+        count_down(long_break_sec)
+        title_label.config(text="Break", fg=RED)
+    elif repr % 2 == 0:
+        count_down(short_break_sec)
+        title_label.config(text="Break", fg=PINK)
+    else:
+        count_down(work_sec)
+        title_label.config(text="Work", fg=GREEN)
+def count_down(count):
+
+    count_min = math.floor(count / 60)
+    count_sec = count % 60
+    if count_sec < 10:
+        count_sec = f"0{count_sec}"
+    check_marks = Label(text="✔", fg=GREEN, bg=YELLOW)
+    canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
+    if count > 0:
+        global timer
+        timer = window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
+        marks = ""
+        work_sessions = math.floor(repr/2)
+        for _ in range(work_sessions):
+            marks += "✔"
+        check_marks.config(text=marks)
+
+
+# 
+#  
+
+def say_something(message):
+    print(message)
+
+def start_timer():
+    global repr
+    repr += 1
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+    if repr % 8 == 0:
+        count_down(long_break_sec)
+        title_label.config(text = "Break", fg = RED)
+    elif repr % 2 == 0:
+        count_down(short_break_sec)
+        title_label.config(text = "Break", fg = PINK)
+    else:
+        count_down(work_sec)
+        title_label.config(text = "Work", fg = GREEN)
+
+def count_down(count):
+    canvas.itemconfig(timer_text, text=f"{count // 60:02}:{count % 60:02}")
+    if count > 0:
+        window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
 
 
 window.after(2000, say_something, "Hello World!")  # Test after method
@@ -62,7 +119,11 @@ canvas.grid(row = 1, column=1)
 
 
 # ---------------------------- TIMER RESET ------------------------------- # 
-
+def reset_timer():
+    window.after_cancel(count_down)
+    canvas.itemconfig(timer_text, text = "00:00")
+    title_label.config(text = "Timer")
+    
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 
@@ -77,39 +138,11 @@ canvas.grid(row = 1, column=1)
 button1 = Button(text = "Start", highlightthickness=0, command = start_countdown)
 button1.grid(row=2, column=0)
 
-button2 = Button(text = "Reset", highlightthickness=0)
+button2 = Button(text = "Reset", highlightthickness=0, command= reset_timer)
 button2.grid(row=2, column=2)
 
 check_mark = Label(text = "✔️", fg = GREEN, bg = YELLOW)
 check_mark.grid(row = 3, column =1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 window.mainloop()
