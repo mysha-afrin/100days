@@ -23,7 +23,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#e9e4b0"
 
-BUTTON_COLOR = "F7CAC9"
+BUTTON_COLOR = "#F7CAC9"
 FONT_NAME = "Courier"
 WORK_MIN = 2
 SHORT_BREAK_MIN = 1
@@ -35,23 +35,7 @@ window.title("Pomodoro")
 window.config(padx = 100, pady = 50, bg = YELLOW)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
-def start_countdown():
-    global repr
-    repr += 1
 
-    work_sec = WORK_MIN * 60
-    short_break_sec = SHORT_BREAK_MIN * 60
-    long_break_sec = LONG_BREAK_MIN * 60
-
-    if repr % 8 == 0:
-        count_down(long_break_sec)
-        title_label.config(text="Break", fg=RED)
-    elif repr % 2 == 0:
-        count_down(short_break_sec)
-        title_label.config(text="Break", fg=PINK)
-    else:
-        count_down(work_sec)
-        title_label.config(text="Work", fg=GREEN)
 def count_down(count):
 
     count_min = math.floor(count / 60)
@@ -71,6 +55,23 @@ def count_down(count):
             marks += "✔"
         check_marks.config(text=marks)
 
+def start_countdown():
+    global repr
+    repr += 1
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if repr % 8 == 0:
+        count_down(long_break_sec)
+        title_label.config(text="Break", fg=RED)
+    elif repr % 2 == 0:
+        count_down(short_break_sec)
+        title_label.config(text="Break", fg=PINK)
+    else:
+        count_down(work_sec)
+        title_label.config(text="Work", fg=GREEN)
 
 # 
 #  
