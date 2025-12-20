@@ -42,10 +42,9 @@ def count_down(count):
     count_sec = count % 60
     if count_sec < 10:
         count_sec = f"0{count_sec}"
-    check_marks = Label(text="✔", fg=GREEN, bg=YELLOW)
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        global timer
+        
         timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
@@ -97,12 +96,12 @@ def start_timer():
         title_label.config(text = "Work", fg = GREEN)
         title_label.config(text = "✔️")
 
-def count_down(count):
+"""def count_down(count):
     canvas.itemconfig(timer_text, text=f"{count // 60:02}:{count % 60:02}")
     if count > 0:
         window.after(1000, count_down, count - 1)
     else:
-        start_timer()
+        start_timer()"""
 
 
 window.after(2000, say_something, "Hello World!")  # Test after method
