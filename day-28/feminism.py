@@ -44,9 +44,18 @@ question = ["Do you believe men and women should have equal rights?" ,
 
 ]
 
+my_answer = [ "You are pure feminist! Pura 100%",
+" You are a strong feminist! pura 75% 💪🌸",
+" You are a moderate feminist! pura 50% 🌸",
+"Feminist dektesi! 90%"
 
 
-your_answer = random.choice(["You are a 75feminist! 💪🌸", "You are not a feminist. ❌"])
+
+
+
+]
+
+your_answer = random.choice(my_answer)
 
 
 
@@ -56,7 +65,9 @@ your_answer = random.choice(["You are a 75feminist! 💪🌸", "You are not a fe
 
 window = Tk()
 window.title("feminism")
-window.config(padx = 10, pady = 5, bg = YELLOW)
+window.config(padx = 5, pady = 5, bg = YELLOW)
+
+
 
 title_label = Label(text = "TEST IF YOU ARE FEMINIST.", font = (FONT_NAME, 50, "bold"), bg = YELLOW, fg = RED)
 title_label.grid(column=2, row=1)
@@ -67,17 +78,28 @@ canvas.create_image(236, 228, image = canvas_img)
 
 def show_result(): 
     canvas.itemconfig(text_id, text=your_answer)
-    button1.config(state="disabled") 
+    '''button1.config(state="disabled") 
     button2.config(state="disabled")
-    button3.config(state="disabled")
+    button3.config(state="disabled")'''
     button4 = Button(text="Restart", width=10, bg=BUTTON_COLOR, command=restart_test)
-    button4.grid(column=2, row=4, pady=20) 
+    button4.grid(column=2, row=4, pady=20)
+    botton5 = Button(text="Exit", width=10, bg=BUTTON_COLOR, command=window.quit)
+    botton5.grid(column=3, row=4, pady=20)
+    button6 = Button(text="Close", width=10, bg=BUTTON_COLOR, command= window.destroy)
+    button6.grid(column=1, row=4, pady=20) 
 def next_question():
     global q_index
      
     q_index += 1 
     if q_index < len(question): 
-        canvas.itemconfig(text_id, text=question[q_index]) 
+        canvas.itemconfig(text_id, text=question[q_index])
+        button1 = Button(text="Yes", width=10, bg=BUTTON_COLOR, command=on_yes)
+        button1.grid(column=1, row=4, pady=20)
+        button2 = Button(text="No", width=10, bg=BUTTON_COLOR, command=on_no)
+        button2.grid(column=2, row=4, pady=20)
+        button3 = Button(text="Skip", width=10, bg=BUTTON_COLOR, command=on_skip)
+        button3.grid(column=3, row=4, pady=20)
+ 
     else: show_result()
 def on_yes():
     canvas.itemconfig(text_id, text="You answered: Yes") 
@@ -95,10 +117,12 @@ def restart_test():
     global q_index
     q_index = 0
     canvas.itemconfig(text_id, text=question[q_index])
-    button1.config(state="normal")
-    button2.config(state="normal")
-    button3.config(state="normal")
-
+    button1 = Button(text="Yes", width=10, bg=BUTTON_COLOR, command=on_yes)
+    button1.grid(column=1, row=4, pady=20)
+    button2 = Button(text="No", width=10, bg=BUTTON_COLOR, command=on_no)
+    button2.grid(column=2, row=4, pady=20)
+    button3 = Button(text="Skip", width=10, bg=BUTTON_COLOR, command=on_skip)
+    button3.grid(column=3, row=4, pady=20)
 
 
 button1 = Button(text="Yes", width=10, bg=BUTTON_COLOR, command=on_yes)

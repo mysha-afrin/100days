@@ -88,12 +88,14 @@ def start_timer():
     if repr % 8 == 0:
         count_down(long_break_sec)
         title_label.config(text = "Break", fg = RED)
+        title_label.config(text = "✔️")
     elif repr % 2 == 0:
         count_down(short_break_sec)
         title_label.config(text = "Break", fg = PINK)
     else:
         count_down(work_sec)
         title_label.config(text = "Work", fg = GREEN)
+        title_label.config(text = "✔️")
 
 def count_down(count):
     canvas.itemconfig(timer_text, text=f"{count // 60:02}:{count % 60:02}")
@@ -142,7 +144,7 @@ button1.grid(row=2, column=0)
 button2 = Button(text = "Reset", highlightthickness=0, command= reset_timer)
 button2.grid(row=2, column=2)
 
-check_mark = Label(text = "✔️", fg = GREEN, bg = YELLOW)
+check_mark = Label(fg = GREEN, bg = YELLOW)
 check_mark.grid(row = 3, column =1)
 
 
