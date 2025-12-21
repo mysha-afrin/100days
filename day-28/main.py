@@ -57,6 +57,9 @@ canvas.create_image(100, 112, image = tomato_img)
 
 
 timer_text = canvas.create_text(100, 130, text = "00:00", fill = "white", font = (FONT_NAME, 35, "bold"))
+
+check_marks = Label(fg = GREEN, bg = YELLOW, font = (FONT_NAME, 20, "bold"))
+check_marks.grid(column = 2, row = 4)
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 def count_down(count):
@@ -75,6 +78,8 @@ def count_down(count):
         for _ in range(work_sessions):
             marks += "✔"
         check_marks.config(text = marks)
+        check_marks.grid(column=2, row=4)
+        
 
 
 
@@ -105,11 +110,13 @@ def start_timer():
 # ---------------------------- TIMER RESET ------------------------------- #
 
 def reset_timer():
-    global reps
-    windows.after_cancel(timer)
+    global reps, timer
+    if timer:
+        windows.after_cancel(timer)
     canvas.itemconfig(timer_text, text = "00:00")
     title_label.config(text = "Timer", fg = GREEN)
     reps = 0
+    check_marks.config(text = "")
 
 
 
