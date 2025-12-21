@@ -104,7 +104,12 @@ def start_timer():
 
 # ---------------------------- TIMER RESET ------------------------------- #
 
-
+def reset_timer():
+    global reps
+    windows.after_cancel(timer)
+    canvas.itemconfig(timer_text, text = "00:00")
+    title_label.config(text = "Timer", fg = GREEN)
+    reps = 0
 
 
 
@@ -128,9 +133,9 @@ def start_timer():
 
 #---------------------------- BUTTONS -------------------------------- #
 
-start_button = Button(text = "Start", highlightthickness=0, command = None)
+start_button = Button(text = "Start", highlightthickness=0, command = start_timer)
 start_button.grid(column=1, row=3)
-reset_button = Button(text = "Reset", highlightthickness=0, command= None)
+reset_button = Button(text = "Reset", highlightthickness=0, command= reset_timer)
 reset_button.grid(column = 3 , row= 3)
 
 
