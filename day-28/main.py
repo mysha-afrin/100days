@@ -7,23 +7,7 @@ import sys
 
 # diagnostics
 
-
-
-
-
-
-
-
-
 # ---------------------------- UI SETUP ------------------------------- #
-
-
-
-
-
-
-
-
 
 
 # # ---------------------------- CONSTANTS ------------------------------- #
@@ -80,13 +64,7 @@ def count_down(count):
         check_marks.config(text = marks)
         check_marks.grid(column=2, row=4)
         
-
-
-
-
-
-
-
+# ----------------------------- TIMER MECHANISM -------------------------------#
 def start_timer():
     global reps
     reps += 1 
@@ -104,9 +82,6 @@ def start_timer():
         title_label.config(text = "Work", fg = GREEN)
 
 
-
-
-
 # ---------------------------- TIMER RESET ------------------------------- #
 
 def reset_timer():
@@ -118,34 +93,11 @@ def reset_timer():
     reps = 0
     check_marks.config(text = "")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #---------------------------- BUTTONS -------------------------------- #
 
 start_button = Button(text = "Start", highlightthickness=0, command = start_timer)
 start_button.grid(column=1, row=3)
 reset_button = Button(text = "Reset", highlightthickness=0, command= reset_timer)
 reset_button.grid(column = 3 , row= 3)
-
-
-
 
 windows.mainloop()
