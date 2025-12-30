@@ -1,4 +1,4 @@
-from tkinter import Canvas, Tk, PhotoImage, Label, Button
+from tkinter import Canvas, Entry, Tk, PhotoImage, Label, Button
 import random
 
 BACKGROUND_COLOR = "#E8E4C9"
@@ -13,17 +13,30 @@ canvas = Canvas(width = 200, height = 200, bg = BACKGROUND_COLOR, highlightthick
 canvas.create_image(100, 100, image = logo_image)
 canvas.grid(column=2, row=2)
 
+my_label = Label(text= "website:", bg= BACKGROUND_COLOR, font=(FONT_NAME, 12, "bold"))
+my_label.grid(column=1, row=3)
+
+website_entry = Entry(width=35)
+website_entry.grid(column=2, row=3, columnspan=2)
+
+my_label = Label(text= "email/username:", bg= BACKGROUND_COLOR, font=(FONT_NAME, 12, "bold"))
+my_label.grid(column=1, row=4)
+
+email_entry = Entry(width=35)
+email_entry.grid(column=2, row=4, columnspan=2)
+
+my_label = Label(text= "password:", bg= BACKGROUND_COLOR, font=(FONT_NAME, 12, "bold"))
+my_label.grid(column=1, row=5)
+
+password_entry = Entry(width = 21)
+password_entry.grid(column=2, row=5, columnspan=1)
 
 
+Generate_password_button = Button(text= "Generate Password", width = 14)
+Generate_password_button.grid(column=3, row=5, columnspan=1)
 
-
-
-
-
-
-
-
-
+add_button = Button(text= "Add", width = 36)
+add_button.grid(column=2, row=6, columnspan=2)
 
 
 
