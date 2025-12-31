@@ -4,32 +4,16 @@ import random
 BACKGROUND_COLOR = "#E8E4C9"
 FONT_NAME = "Arial"
 
+def save_password():
+    with open("day-29/data.txt", "a") as data_file:
+        website = website_entry.get()
+        email = email_entry.get()
+        password = password_entry.get()
+        data_file.write(f"{website} / {email} / {password}\n")
+
 windows = Tk()
 windows.title("Password Manager")
 windows.config(padx= 20, pady= 20, bg = BACKGROUND_COLOR , highlightthickness = 0)
-
-
-
-def save_password():
-    website = website_entry.get()
-    email = email_entry.get()
-    password = password_entry.get()
-    with open("day-29/data.txt", "a") as data_file:
-        data_file.write(f"{website} | {email} | {password}\n")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -56,13 +40,13 @@ my_label.grid(column=1, row=5)
 
 password_entry = Entry(width = 21)
 password_entry.grid(column=2, row=5, columnspan=1)
-
+password_entry["width"] = 8
 
 Generate_password_button = Button(text= "Generate Password", width = 14)
 Generate_password_button.grid(column=3, row=5, columnspan=1)
 
-add_button = Button(text= "Add", width = 36)
-add_button.grid(column=2, row=6, columnspan=2, command= save_password)
+add_button = Button(text= "Add", width = 36, command= save_password)
+add_button.grid(column=2, row=6, columnspan=2)
 
 
 
