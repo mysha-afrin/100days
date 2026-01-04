@@ -1,25 +1,40 @@
-from tkinter import Canvas, Entry, Tk, PhotoImage, Label, Button
+from tkinter import Canvas, Entry, Tk, PhotoImage, Label, Button, messagebox
 import random
 
-BACKGROUND_COLOR = "#E8E4C9"
+BACKGROUND_COLOR = "#F0EFEB"
 FONT_NAME = "Arial"
 LETTERS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NUMBERS = '0123456789'
 SYMBOLS = '!#$%&()*+'
-
+BUTTON_COLOR = "#B0DBF3"
 
 def save_password():
-    website = website_entry.get()
-    email = email_entry.get()
-    password = password_entry.get()
-    if len(website) == 0 or len(email) == 0 or len(password) == 0:
-        print("Please fill in all fields")
-        return
     with open("data.txt", "a") as data_file:
-        data_file.write(f"{website} / {email} / {password}\n")
-    website_entry.delete(0, 'end')
-    email_entry.delete(0, 'end')
-    password_entry.delete(0, 'end')
+        website = website_entry.get()
+        email = email_entry.get()
+        password = password_entry.get()
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showinfo(title = "Error", message = "Please don't leave any fild empty!")
+        print("Please fill in all fields")
+    
+    if len(password) < 8 :
+        messagebox.showinfo(title = "Error", message = "Password must be at least 8 characters long!")
+        return
+    if not any(char.isdigit() for char in password):
+        messagebox.showinfo(title = "Error", message = "Password must contain at least one number!")
+        return
+    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} "
+                                            f"\nPassword: {password} \nIs it ok to save?")
+
+    if is_ok:
+
+        with open("day-29/data.txt", "a") as data_file:
+            data_file.write(f"{website} / {email} / {password}\n")
+            website_entry.delete(0, 'end')
+            email_entry.delete(0, 'end')
+            password_entry.delete(0, 'end')
+            messagebox.showinfo(title="Passord Manager", message="Password saved successfully!")
+
 
 def generate_password():
     password = []
@@ -68,7 +83,7 @@ password_entry["width"] = 10
 Generate_password_button = Button(text= "Generate Password", width = 14, command = generate_password)
 Generate_password_button.grid(column=3, row=5, columnspan=1)
 
-add_button = Button(text= "Add", width = 36, command= save_password)
+add_button = Button(text= "Add", width = 36, bg = BUTTON_COLOR, command= save_password)
 add_button.grid(column=2, row=6, columnspan=2)
 
 
