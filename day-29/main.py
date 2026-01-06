@@ -17,12 +17,10 @@ def save_password():
         messagebox.showinfo(title = "Error", message = "Please don't leave any fild empty!")
         print("Please fill in all fields")
     
-    if len(password) < 8 :
-        messagebox.showinfo(title = "Error", message = "Password must be at least 8 characters long!")
+    if len(password) < 8 or not any(char.isdigit() for char in password):
+        messagebox.showinfo(title = "Error", message = "Password must be at least 8 characters long and one digit!")
         return
-    if not any(char.isdigit() for char in password):
-        messagebox.showinfo(title = "Error", message = "Password must contain at least one number!")
-        return
+   
     is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} "
                                             f"\nPassword: {password} \nIs it ok to save?")
 

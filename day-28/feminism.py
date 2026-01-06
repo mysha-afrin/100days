@@ -63,16 +63,16 @@ your_answer = random.choice(my_answer)
 
 
 
-windows = Tk()
-windows.title("Feminist calculator")
-windows.config(padx = 100, pady = 50, bg = YELLOW)
-windows.minsize(width = 400, height = 300)
+window = Tk()
+window.title("feminism")
+window.config(padx = 5, pady = 5, bg = YELLOW)
 
-title_label = Label(text = "Feminisam", fg = GREEN, bg = YELLOW, font = (FONT_NAME, 50))
-title_label.grid(column = 2, row =1)
 
-canvas = Canvas(width = 200, height = 224, bg = YELLOW, highlightthickness = 0)
-canvas.grid(column=2, row=2)
+
+title_label = Label(text = "TEST IF YOU ARE FEMINIST.", font = (FONT_NAME, 50, "bold"), bg = YELLOW, fg = RED)
+title_label.grid(column=2, row=1)
+canvas = Canvas(width = 500, height = 450, bg = YELLOW, highlightthickness = 0)
+canvas.grid(column=2 , row=2)
 canvas_img = PhotoImage(file = "day-28\image.png")
 canvas.create_image(236, 228, image = canvas_img)
 
@@ -103,13 +103,13 @@ def next_question():
     else: show_result()
 def on_yes():
     canvas.itemconfig(text_id, text="You answered: Yes") 
-    windows.after(800, next_question) 
+    window.after(800, next_question) 
 def on_no(): 
     canvas.itemconfig(text_id, text="You answered: No") 
-    windows.after(800, next_question)
+    window.after(800, next_question)
 def on_skip(): 
     canvas.itemconfig(text_id, text="Question skipped") 
-    windows.after(800, next_question) 
+    window.after(800, next_question) 
 text_id = canvas.create_text( 320, 320)
 
 
@@ -145,4 +145,4 @@ text_id = canvas.create_text(250, 50, width=400, text=question[0], font=(FONT_NA
 
 
 
-windows.mainloop()
+window.mainloop()
