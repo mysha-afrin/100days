@@ -31,7 +31,15 @@ except FileNotFoundError:
     file.write("New file created.")
 except KeyError as error_message:
     print(f"The key {error_message} does  not exist.")
+else:
+    content = file.read()
+    print(content)
+
 #this opens a file if it exists, if not it creates a new file.
 #except should not used barely, only for specifin errors you are expecting.
-'''The error message should be used specifically to catch the error, if not used then
-it can hide other bugs in the code.'''
+###The error message should be used specifically to catch the error, if not used then
+###it can hide other bugs in the code.###
+finally:
+    file.close()
+    print("File was closed.")
+#it closes the file no matter what.
