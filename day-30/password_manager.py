@@ -5,7 +5,7 @@ import pyperclip
 import json
 import os
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
-DIR = "day-30\data.json"
+
 
 #Password Generator Project
 def generate_password():
