@@ -2,13 +2,17 @@ from tkinter import *
 import random
 import pandas
 
+current_card = {}
+to_learn = {}
 
 try:
     data = pandas.read_csv("day-31\\words_to_learn.csv")
 except FileNotFoundError:
     original_data = pandas.read_csv("day-31\\french_words.csv")
-to_learn = data.to_dict(orient = "records")
-current_card = {}
+    to_learn = original_data.to_dict(orient = "records")
+else:
+    to_learn = data.to_dict(orient = "records")
+
 #------------------------------Brain of the flash card app----------------#
 def next_card():
     global current_card, flip_timer
@@ -33,7 +37,7 @@ def is_known():
 BACKGROUND_COLOR = "#B1DDC6"
 
 
-#------------------------------UI Setup
+#------------------------------UI Setup-----------------#
 windows = Tk()
 windows.title("Flashy")
 windows.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
