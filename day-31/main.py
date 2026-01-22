@@ -37,7 +37,7 @@ def is_known():
 BACKGROUND_COLOR = "#B1DDC6"
 
 
-#------------------------------UI Setup
+#------------------------------UI Setup-----------------#
 windows = Tk()
 windows.title("Flashy")
 windows.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
