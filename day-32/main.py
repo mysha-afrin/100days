@@ -10,27 +10,38 @@
 
 
 import smtplib
+import random
+import datetime as dt
+
+now =dt.datetime.now()
+
+days_of_week = now.weekday()
+print(days_of_week)
+
 
 my_email = "ahonarahman2026@gmail.com"
-password = "kuedtaitjjarlfet"   # no spaces
+password = "kuedtaitjjarlfet"  
 
-print("Step 1: creating SMTP object")
 
-connection = smtplib.SMTP("smtp.gmail.com", 587)
-print("Step 2: connected to server")
+if days_of_week == 4:
+    with open("day-32\\birthday.txt", "r") as quote_file:
+        data = quote_file.readlines()
+        quote = random.choice(data)
+    print(quote)
+    print("Step 1: creating SMTP object")
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+        print("Step 2: connected to server")
 
-connection.starttls()
-print("Step 3: TLS started")
+        connection.starttls()
+        print("Step 3: TLS started")
+        connection.login(my_email, password)
+        print("Step 4: logged in")
+        connection.sendmail(from_addr=my_email,
+                            to_addrs="myshaafrinjeba916@gmail.com",
+                            msg=f"Subject:Friday Motivation\n\n{quote}"
+                            )
+        print("Step 5: mail sent")
 
-connection.login(my_email, password)
-print("Step 4: logged in")
+        
+        print("Step 6: connection closed")
 
-connection.sendmail(
-    from_addr=my_email,
-    to_addrs="s.rahman.kaium@gmail.com",
-    msg="Subject:Test\n\nHello, This is a automated email from a person only you know. Love you!"
-)
-print("Step 5: mail sent")
-
-connection.quit()
-print("Step 6: connection closed")
