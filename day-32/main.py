@@ -23,11 +23,17 @@ my_email = "ahonarahman2026@gmail.com"
 password = "kuedtaitjjarlfet"  
 
 
-if days_of_week == 4:
-    with open("day-32\\birthday.txt", "r") as quote_file:
-        data = quote_file.readlines()
-        quote = random.choice(data)
-    print(quote)
+if days_of_week == 5:
+    with open("day-32/birthday.txt", "r") as file:
+        print("opening file")
+        quote_lines = file.readlines()
+   # print(quote_lines)
+if not quote_lines:
+    print("file is empty")
+else:
+    random_quote = random.choice(quote_lines)
+    print(random_quote)
+    print('randomly_choosen')
     print("Step 1: creating SMTP object")
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         print("Step 2: connected to server")
@@ -38,7 +44,7 @@ if days_of_week == 4:
         print("Step 4: logged in")
         connection.sendmail(from_addr=my_email,
                             to_addrs="myshaafrinjeba916@gmail.com",
-                            msg=f"Subject:Friday Motivation\n\n{quote}"
+                            msg=f"Subject:Friday Motivation\n\n{random_quote}"
                             )
         print("Step 5: mail sent")
 
