@@ -26,13 +26,15 @@ if current_day == birthdays_dict[2]["day"]:
         print("read letter 3")
     letter_content = random.choice([letter_contents1, letter_contents2, letter_contents3])
     letter_sent_to = birthdays_dict[1]["name"]
+    send_to_email = birthdays_dict[1]["email"]
+    letter_content = letter_content.replace("[NAME]", letter_sent_to)
     print("step 3: letter content chosen")
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(my_email, password)
         print("step 4: logged in to email server")
         connection.sendmail(from_addr=my_email,
-                                to_addrs="myshaafrinjeba916@gmail.com",
+                                to_addrs= send_to_email,
                                 msg=f"Subject:Friday Motivation\n\n{letter_content}"
                             )
         print("step 5: email sent")
