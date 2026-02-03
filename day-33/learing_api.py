@@ -13,7 +13,8 @@ print(data)'''
 
 parameters = {
     "lat": MY_LAT,
-    "lng": MY_LONG
+    "lng": MY_LONG,
+    "formatted": 0
 }
 
 response = requests.get(url = "https://api.sunrise-sunset.org/json" , params = parameters)
