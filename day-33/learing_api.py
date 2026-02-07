@@ -1,6 +1,6 @@
 import requests
 import json
-
+from datetime import datetime, timezone
 MY_LAT = 22.845640
 MY_LONG = 89.540329
 
@@ -24,9 +24,12 @@ data = response.json()
 #sunset = data["results"]["sunset"]
 #print(sunrise)
 #print(sunset)
-print(data)
+
 
 sunrise = data["results"]["sunrise"]
 sunset = data["results"]["sunset"]
-print(sunrise)
-print(sunset)
+print(sunrise.split("T")[1].split(":")[0])
+
+
+time_now = datetime.now()
+print(time_now.hour)
