@@ -1,25 +1,22 @@
-from tkinter import *
-import requests
+#from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
 
-THEME_COLOR = "#375362"
+question_bank = []
+for question in question_data:
+    question_text = question["question"]
+    question_answer = question["correct_answer"]
+    new_question = Question(question_text, question_answer)
+    question_bank.append(new_question)
 
-window = Tk()
-window.title("Quizzler app")
-window.minsize(width=500, height =500)
-window.config(padx=20, pady=20, bg= THEME_COLOR)
 
+quiz = QuizBrain(question_bank)
 
-canvas = Canvas(width=300, height=250,bg = "white", highlightthickness=0)
-canvas.grid(row=2, column = 1, columnspan=4, pady=50)
-false_image = PhotoImage(file= "day-34/false.png")
-true_image = PhotoImage(file= "day-34/true.png")
+while quiz.still_has_questions():
+    quiz.next_question()
 
-#------------------------------Buttons----------------#
-false_button = Button(image = false_image, highlightthickness=0)
-false_button.grid(row=3, column = 4)
-
-true_button = Button(image = true_image, highlightthickness=0)
-true_button.grid(row=3, column = 0)
+print("You've completed the quiz")
+print(f"Your final score was: {quiz.score}/{quiz.question_number}")
 
 
 
@@ -30,7 +27,3 @@ true_button.grid(row=3, column = 0)
 
 
 
-
-
-
-window.mainloop()

@@ -10,11 +10,12 @@ parameters = {"amount": 10,
 response = requests.get(url, params = parameters)
 response.raise_for_status()
 data = response.json()
-print(data["results"])
 
 question_data = data["results"]
 
-question_data = [
+print(question_data)
+
+'''question_data = [
     {
         "category": "Science: Computers",
         "type": "boolean",
@@ -116,3 +117,4 @@ question_data = [
         ]
     }
 ]
+'''
