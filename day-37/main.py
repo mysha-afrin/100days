@@ -22,9 +22,24 @@ graph_config = {
 }
 
 headers = {
-    token : token
+    "X-USER-TOKEN" : token
 }
 
 
-response = requests.post(url = graph_endpoint, json = graph_config, headers = headers)
+#response = requests.post(url = graph_endpoint, json = graph_config, headers = headers)
+#print(response.text)
+
+
+#response = requests.get(url = graph_endpoint, headers = headers)
+#print(response.text)
+
+
+pixel_creation_endpoint = f"{pixela_endpoint}/{username}/graphs/graph1"
+
+pixela_data = {
+    "date" : "20240630",
+    "quantity" : "30"
+}
+
+response = requests.post(url = pixel_creation_endpoint, json = pixela_data, headers = headers)
 print(response.text)
