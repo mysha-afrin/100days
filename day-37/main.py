@@ -1,7 +1,11 @@
 import requests
+from datetime import datetime
 token = "asfdjhriwndnwkdn"
 username = 'ultamurgi'
 pixela_endpoint = "https://pixe.la/v1/users"
+GRAPH_ID = "graph1"
+
+
 
 user_params = {
     "token" : token,
@@ -14,7 +18,7 @@ user_params = {
 graph_endpoint = f"{pixela_endpoint}/{username}/graphs"
 
 graph_config = {
-    'id' : 'graph1',
+    'id' : GRAPH_ID,
     'name' : 'Exercise Graph',
     'unit' : 'minutes',
     'type' : 'int',
@@ -34,12 +38,24 @@ headers = {
 #print(response.text)
 
 
-pixel_creation_endpoint = f"{pixela_endpoint}/{username}/graphs/graph1"
+pixel_creation_endpoint = f"{pixela_endpoint}/{username}/graphs/{GRAPH_ID}/latest"
+
+today = datetime.now()
 
 pixela_data = {
-    "date" : "20240630",
+    "date" : today.strftime("%Y%m%d"),
     "quantity" : "30"
 }
 
-response = requests.post(url = pixel_creation_endpoint, json = pixela_data, headers = headers)
+#response = requests.post(url = pixel_creation_endpoint, json = pixela_data, headers = headers)
+#print(response.text)
+update_data = {
+    "quantity" : "45"
+}
+#response = requests.get(url = pixel_creation_endpoint, headers = headers)
+update_endpoint = f"{pixela_endpoint}/{username}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+response = requests.put(url = update_endpoint, json = update_data, headers = headers)
 print(response.text)
+
+
+#https://pixe.la/v1/users/ultamurgi/graphs/graph1.html
